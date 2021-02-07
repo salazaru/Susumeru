@@ -16,5 +16,5 @@ data including all the anime lists of all users including watch data and rating.
 https://f000.backblazeb2.com/file/mal-db/UserAnimeList.csv
 
 ---
-> source: MyAnimeList.net
+> source: MyAnimeList.net  
 > https://github.com/racinmat/myanimelist-crawler.
