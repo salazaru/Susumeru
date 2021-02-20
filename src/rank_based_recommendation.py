@@ -11,20 +11,20 @@ idntfrs = ['na', '-', '--', '?', 'None', 'none', 'non', '', 'Not available', ' '
 anime_df = pd.read_csv(anime_data, na_values=idntfrs)
 
 # discard unwanted items
-anime_df.drop(['status', 'aired_string', 'rank',
-               'popularity', 'members'],
+anime_df.drop(['status', 'aired_string', 'score',
+               'scored_by', 'members', 'popularity'],
               axis=1, inplace=True)
 
 # print('anime_df Shape:', anime_df.shape)
 # print(anime_df.head())
 
 # anime_df = anime_df.sort_values(by=['score'], ascending=False)
-anime_df = anime_df[anime_df['scored_by'] > 100]
+# anime_df = anime_df[anime_df['popularity'] > 100]
 # display shape and rows of each data frame
 # print('anime_df Shape:', anime_df.shape)
 # print(anime_df.head())
 
-# anime_df = anime_df.sort_values(by=['score'], ascending=False)
+anime_df = anime_df.sort_values(by=['rank'], ascending=True)
 # print('anime_df Shape:', anime_df.shape)
 # print(anime_df.head())
 
@@ -33,8 +33,8 @@ anime_df = anime_df[anime_df['scored_by'] > 100]
 # anime_df['genre'] =
 #
 
-def get_score_based_recommendation(animes_to_recommend=10):
-    animes_recommending = anime_df.nlargest(animes_to_recommend, 'score')
+def get_rank_based_recommendation(animes_to_recommend=10):
+    animes_recommending = anime_df.nlargest(animes_to_recommend, 'rank')
     recommendation = animes_recommending['title'].to_list()
 
     return recommendation
@@ -88,6 +88,6 @@ def get_score_based_recommendation(animes_to_recommend=10):
 #         return "No such anime in our records, please check again"
 #
 #
-print(get_score_based_recommendation())
+print(get_rank_based_recommendation())
 # # for i in a:
 # #     print(anime_df[anime_df['title']==i])
