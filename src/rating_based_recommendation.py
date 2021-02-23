@@ -1,12 +1,6 @@
 import pandas as pd
-import numpy as np
-from scipy.sparse import csr_matrix
 from scipy import sparse
 from sklearn.neighbors import NearestNeighbors
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
 
 # read & import data into pandas data frame
