@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 # read & import data into pandas data frame
 anime_user_data = "user_mal.csv"
 anime_data = "anime.csv"
@@ -25,8 +24,11 @@ anime_df.drop(['status', 'aired_string', 'score',
 
 def get_location_based_recommendation(location, animes_to_recommend=10):
     if location in user_df['country'].values:
+        # get only the users that are within the specifie country
         location_user_df = user_df[user_df['country'] == location]
         # print(location_user_df.head())
+
+        # get only the user reviews that are within the specified country based off username
         location_anime_user_df = anime_user_df[anime_user_df['username'].isin(location_user_df['username'].to_list())]
         # print(location_anime_user_df.head())
 

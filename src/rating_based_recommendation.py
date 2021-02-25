@@ -47,6 +47,8 @@ anime_user_df.reset_index(inplace=True)
 csr_anime_user = sparse.load_npz("csr_anime_user.npz")
 # print(csr_anime_user)
 
+# KNN to find similarities/trends among users
+# Using cosine metric as well as brute force algorithm in the interest of time
 knn = NearestNeighbors(metric='cosine', algorithm='brute', n_neighbors=20, n_jobs=-1)
 knn.fit(csr_anime_user)
 
@@ -91,6 +93,7 @@ def get_rating_based_recommendation(anime, animes_to_recommend=10):
         return recommended_animes
     else:
         return "No found anime. Try again"
+
 
 # User based collaborative filtering
 print(get_rating_based_recommendation("Sword Art Online", animes_to_recommend=15))

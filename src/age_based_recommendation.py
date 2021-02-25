@@ -29,14 +29,16 @@ user_df.drop(['gender'], axis=1, inplace=True)
 
 
 def get_location_based_recommendation(age, animes_to_recommend=10):
-    age_user_df = user_df[user_df.iloc[:, 2].between(20, 50, inclusive=False)]
+    age_user_df = user_df[user_df.iloc[:, 2].between(age - 5, age + 5, inclusive=False)]
     # print(location_user_df.head())
     # print(age_user_df.head())
     # print(age_user_df.shape)
+
+    # omits all of the users from our review dataset that do not have a username in our age range
     age_user_df = anime_user_df[anime_user_df['username'].isin(age_user_df['username'].to_list())]
 
-    print(age_user_df.head())
-    print(age_user_df.shape)
+    # print(age_user_df.head())
+    # print(age_user_df.shape)
     # print(age_user_df.head())
     # print(location_anime_user_df.head())
 
@@ -50,22 +52,26 @@ def get_location_based_recommendation(age, animes_to_recommend=10):
     min_votes = 50
     anime_votes = age_user_df.groupby('anime_id')['my_score'].agg('count')
 
+    # make reading the graph and performing operations easier by grouping columns by username
     age_anime_user_df = age_user_df.pivot(index='anime_id', columns='username', values='my_score')
     anime_mean = age_anime_user_df.mean(axis=1)
 
+    # adds the IMDB top 250 formula to each of the animes and adds that as a new column
     age_anime_df = anime_df
     age_anime_df['weighted_score'] = (anime_votes / (anime_votes + min_votes)) * anime_mean + \
                                           (min_votes / (anime_votes + min_votes)) * whole_mean
 
-    print(age_anime_df)
+    # print(age_anime_df)
+    # drops the animes that were not reviewed (aka not recommended by others in the age range)
     age_anime_df.dropna(inplace=True)
-    print(age_anime_df)
+    # print(age_anime_df)
 
-    print("recommending")
+    # print("recommending")
+    # getting the nth largest scores (high scored in that age range)
     animes_recommending = age_anime_df.nlargest(animes_to_recommend, 'weighted_score')
     recommendation = animes_recommending['title'].to_list()
 
     return recommendation
 
 
-print(get_location_based_recommendation(60))
+print(get_location_based_recommendation(20))
