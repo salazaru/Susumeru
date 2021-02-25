@@ -69,6 +69,7 @@ def get_rating_based_recommendation(anime, animes_to_recommend=10):
 
         # print(anime_id)
         # print(csr_anime_user[anime_id])
+
         # use KNN to find the animes that users recommend based on what users recommend this anime
         distances, indices = knn.kneighbors(csr_anime_user[anime_id], n_neighbors=animes_to_recommend+1)
         # print(indices)
@@ -79,13 +80,17 @@ def get_rating_based_recommendation(anime, animes_to_recommend=10):
 
         #grab the title of each anime and append to a list
         for index in recommended_animes_indices:
+            # print(index)
             recommended_anime_id = anime_user_df.iloc[index[0]]['anime_id']
-            recommended_anime = anime_df[anime_df['anime_id'] == recommended_anime_id]['title'].values[0]
-            recommended_animes.append(recommended_anime)
+            recommended_anime = anime_df[anime_df['anime_id'] == recommended_anime_id]['title'].values
+
+            # we left out some data originally so this is to make sure that we don't recommend something that we cut out
+            if len(recommended_anime):
+                recommended_animes.append(recommended_anime[0])
 
         return recommended_animes
     else:
         return "No found anime. Try again"
 
-
-print(get_rating_based_recommendation("Naruto"))
+# User based collaborative filtering
+print(get_rating_based_recommendation("Sword Art Online", animes_to_recommend=15))

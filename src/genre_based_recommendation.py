@@ -37,7 +37,6 @@ def get_genre_based_recommendation(anime, cosine_sim=cos_sim, animes_to_recommen
     if len(anime_in_data):
         # print(anime_in_data['anime_id'])
         anime_id_idx = anime_df[anime_df['anime_id'] == int(anime_in_data['anime_id'])].index.values.astype(int)[0]
-        # .index.values.astype(int)[0]
         # print(anime_id_idx)
 
         sim_scores = list(enumerate(cosine_sim[anime_id_idx]))
@@ -53,5 +52,9 @@ def get_genre_based_recommendation(anime, cosine_sim=cos_sim, animes_to_recommen
         # print(anime_indices)
 
         return anime_df['title'].iloc[anime_indices]
+    else:
+        return "Try again with a different anime"
 
-print(get_genre_based_recommendation("Inu x Boku SS"))
+
+# Genre based collaborative filtering
+print(get_genre_based_recommendation("Sword Art Online", animes_to_recommend=20))
