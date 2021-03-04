@@ -80,7 +80,7 @@ def print_map(users_by_country, region):
         ax.set_title(title, fontdict={'fontsize': '25', 'fontweight': '3'})
 
         # Create an annotation for the data source
-        ax.annotate(source, xy=(0.1, .08), xycoords='figure fraction', horizontalalignment='left',
+        ax.annotate(source, xy=(0.5, .08), xycoords='figure fraction', horizontalalignment='left',
                     verticalalignment='bottom', fontsize=10)
 
         # Create colorbar as a legend
@@ -90,7 +90,7 @@ def print_map(users_by_country, region):
         sm._A = []
 
         # Add the colorbar to the figure
-        cbaxes = fig.add_axes([0.15, 0.25, 0.01, 0.4])
+        cbaxes = fig.add_axes([0.25, 0.25, 0.01, 0.4])
         cbar = fig.colorbar(sm, cax=cbaxes)
         cbar.ax.tick_params(labelsize=15)
 
@@ -115,7 +115,7 @@ def print_map(users_by_country, region):
         ax.axis('off')
         map_df.plot(column=col, ax=ax, edgecolor='0.8', linewidth=1, cmap=cmap)
         ax.set_title(title, fontdict={'fontsize': '25', 'fontweight': '3'})
-        ax.annotate(source, xy=(0.24, .08), xycoords='figure fraction',
+        ax.annotate(source, xy=(0.5, .08), xycoords='figure fraction',
                     horizontalalignment='left',
                     verticalalignment='bottom', fontsize=10)
         sm = plt.cm.ScalarMappable(norm=plt.Normalize(vmin=vmin, vmax=vmax), cmap=cmap)
@@ -192,4 +192,4 @@ users_by_country = {category: list(location_data).count(
 number_user_list = pd.DataFrame.from_dict(
     users_by_country, orient='index', columns=['number of users'])
 
-print_map(users_by_country, 'Africa')
+print_map(users_by_country, 'North America')
