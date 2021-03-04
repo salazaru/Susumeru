@@ -31,6 +31,7 @@ Our recommender system has two approaches: by analyzing the correlation between 
 
 **/data_raw**  
 > - raw user and anime data that was sourced from MyAnimeList and shared on Kaggle.  
+
 **/data_cleaned_filtered**  
 > - various csv files with certain features dropped. All files have no NaN or missing values.  
 > - a requirements.txt file that enables the user to install all required third-party modules and libraries.  
