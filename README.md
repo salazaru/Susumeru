@@ -9,6 +9,9 @@ Interpretable Anime Recommender & Trend Analyzer
 * [Third-party Modules](#third-party-modules)
 
 ## Summary:
+
+<img align="right" width="100" height="100" src="images/mal_logo.png">
+
 Our recommender system has two approaches: by analyzing the correlation between the user and the anime, and by analyzing the correlation between one anime and another. To obtain the correlation between one anime and another we could first extract the features of the anime series using principal component analysis (PCA) for features like genre, producer, and rating. Next, we will use unsupervised learning like K-means to cluster the anime series with similar features. This way, for a given anime series, we could recommend similar anime series. To analyze the ranking between the user and the anime, we could extract and analyze (taking average or split into clusters) the features of the anime series the user viewed and recommend animes with similar features. Due to the interpretability of our recommender system, it can be used by consumers to find the best anime to watch according to their tastes. Further, the analysis of trends may inform anime producers and distributors as to where the industry is heading.
 
 ### Broad trends to analyze:
@@ -20,6 +23,10 @@ Our recommender system has two approaches: by analyzing the correlation between 
 1. Where do certain people watch titles from? Is there a correlation? Popularity by location?
 2. Viewer ages.
 3. We can use the dates when an anime is watched by a user to gauge if it is still relevant after it has aired. Just a plot of when people are watching.
+
+<p align="center">
+  <img width="460" height="300" src="images/score.png">
+</p>
 
 ## File Structure:
 **/src**  
@@ -36,11 +43,11 @@ Our recommender system has two approaches: by analyzing the correlation between 
 > - various csv files with certain features dropped. All files have no NaN or missing values.  
 > - a requirements.txt file that enables the user to install all required third-party modules and libraries.  
 
-## How to run the code
+## How to run the code:
 1. Install python (version 3)
 2. Install required modules/libraries (see requirements.txt)
 3. Ensure you have the **data_cleaned_filtered** folder downloaded to your working directory.  
-4. Run the script files. (Go to myanimelist.com to search for an anime and compare results.)  
+4. Run the script files. (Go to MyAnimeList.net to search for an anime and compare results.)  
 5. Use Jupyter Notebooks to run **visualizations.ipynb**
 
 ## Third-party Modules:
