@@ -22,15 +22,16 @@ Our recommender system has two approaches: by analyzing the correlation between 
 3. We can use the dates when an anime is watched by a user to gauge if it is still relevant after it has aired. Just a plot of when people are watching.
 
 ## File Structure:
-**src**  
+**/src**  
 > - a python notebook that shows how all graphs were generated.  
 > - python script files used for prototyping various recommendation models, all of which use a single feature.  
 > - a finalized python script file that combines all the features of the individual recommendation systems into one combined recommendation system with multiple user inputs.  
 > - a python script file that cleans and filters the raw data files for building the recommendation system and data analysis.  
 > - a python script file analyzes genre over time according to different metric such as average MAL score, popularity, and number of members.  
-**data_raw**  
+
+**/data_raw**  
 > - raw user and anime data that was sourced from MyAnimeList and shared on Kaggle.  
-**data_cleaned_filtered**
+**/data_cleaned_filtered**  
 > - various csv files with certain features dropped. All files have no NaN or missing values.  
 > - a requirements.txt file that enables the user to install all required third-party modules and libraries.  
 
