@@ -25,7 +25,7 @@ Our recommender system has two approaches: by analyzing the correlation between 
 3. We can use the dates when an anime is watched by a user to gauge if it is still relevant after it has aired. Just a plot of when people are watching.
 
 <p align="center">
-  <img width="720" height="576" src="images/pop.png">
+  <img width="700" height="556" src="images/pop.png">
 </p>
 
 ## File Structure:
