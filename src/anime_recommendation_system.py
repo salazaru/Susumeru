@@ -17,7 +17,6 @@ idntfrs = ['na', '-', '--', '?', 'None', 'none', 'non', '', 'Not available', ' '
 # There is about 46 million reviews, but it lasts way way too long, so we are just
 # using 1 million reviews from 5012 users
 # Read our datasets into dataframes from csv files
-
 anime_df = pd.read_csv(anime_data, na_values=idntfrs)
 anime_user_df = pd.read_csv(anime_user_data, na_values=idntfrs, nrows=10000000)
 age_user_df = pd.read_csv(age_user_data, na_values=idntfrs)
@@ -89,7 +88,7 @@ knn = NearestNeighbors(metric='cosine', algorithm='brute', n_neighbors=20, n_job
 knn.fit(csr_anime_user)
 # *****************************************************************
 
-print("Ready")
+# print("Ready")
 def get_recommendations(age=None, location=None, anime=None, animes_to_recommend=10):
     recommendations = []
 
@@ -203,7 +202,8 @@ def get_recommendations(age=None, location=None, anime=None, animes_to_recommend
 
                 # we left out some data originally so this is to make sure that we don't recommend something that we cut out
                 if len(recommended_anime):
-                    rating_recommended_animes.append(recommended_anime[0])
+                    if recommended_anime[0] != anime:
+                        rating_recommended_animes.append(recommended_anime[0])
 
             recommendations.append(["Recommendations based on similar rated animes", rating_recommended_animes])
 
@@ -261,4 +261,6 @@ while True:
 
     for recommendation in recs:
         print(recommendation[0])
-        print(recommendation[1])
+
+        for recc in recommendation[1]:
+            print(recc)
