@@ -93,6 +93,8 @@ def print_map(users_by_country, region):
         cbaxes = fig.add_axes([0.25, 0.25, 0.01, 0.4])
         cbar = fig.colorbar(sm, cax=cbaxes)
         cbar.ax.tick_params(labelsize=15)
+        
+        fig.savefig('world_map.png', dpi=300)
 
 
     def print_continent(region):
@@ -141,6 +143,8 @@ def print_map(users_by_country, region):
         
         cbar = fig.colorbar(sm, cax=cbaxes)
         cbar.ax.tick_params(labelsize=15)
+        
+        fig.savefig(region + '_map.png', dpi=300)
 
 
     def get_countries_in_continent(continent):
@@ -192,4 +196,4 @@ users_by_country = {category: list(location_data).count(
 number_user_list = pd.DataFrame.from_dict(
     users_by_country, orient='index', columns=['number of users'])
 
-print_map(users_by_country, 'North America')
+print_map(users_by_country, 'Africa')
