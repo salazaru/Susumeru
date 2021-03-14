@@ -1,5 +1,3 @@
-# import libraries
-from datetime import datetime
 from datetime import date
 import pandas as pd
 import numpy as np
@@ -102,10 +100,10 @@ cities_df   = pd.read_csv(cities)
 
 # drop unwanted features from the data frames
 anime_df.drop(['title_english', 'title_japanese', 'title_synonyms', \
- 			   'image_url', 'type', 'source', 'episodes', 'airing', 'aired', \
- 			   'duration', 'rating', 'broadcast', 'related', \
- 			   'producer', 'licensor', 'premiered', 'studio', 'opening_theme', \
- 			   'ending_theme', 'background', 'favorites'],
+               'image_url', 'type', 'source', 'episodes', 'airing', 'aired', \
+               'duration', 'rating', 'broadcast', 'related', \
+               'producer', 'licensor', 'premiered', 'studio', 'opening_theme', \
+               'ending_theme', 'background', 'favorites'],
                axis=1, inplace=True)
 
 user_df.drop(['user_watching', 'user_completed', 'user_onhold', 'user_dropped', \
